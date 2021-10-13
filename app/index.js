@@ -22,8 +22,6 @@ function renderPageContents() {
     entries.forEach(([name, result]) => {
         const el = createEl('poll-row');
 
-        console.log(totalVotes, result);
-
         const nameElement = createEl('poll-row__name');
         nameElement.textContent = name;
 
