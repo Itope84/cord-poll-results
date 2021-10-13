@@ -1,0 +1,116 @@
+/* Google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap');
+
+/* Variables */
+:root {
+    --body-bg-color: #FDFAF5;
+    --card-bg-color: #fff;
+    --body-color: #16191d;
+}
+
+body.app {
+    background-color: var(--body-bg-color);
+    color: var(--body-color);
+    max-width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+
+    /* Typography */
+    font-family: 'Open Sans', sans-serif;
+
+    /* Flexbox */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* 12px padding for mobile views */
+    padding: 12px;
+}
+
+body * {
+    box-sizing: inherit;
+}
+
+.app--logo {
+    width: 100%;
+    max-width: 150px;
+    margin-bottom: 48px;
+}
+
+.poll-card {
+    display: block;
+    padding: 24px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
+    border-radius: 8px;
+
+    width: 100%;
+    max-width: 480px;
+    min-height: 480px;
+}
+
+.poll-card__title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #16191d;
+    text-align: center;
+}
+
+.poll-card__results {
+    padding: 12px;
+    margin: 12px auto;
+}
+
+.poll-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.poll-row__name {
+    flex-basis: calc(30% - 12px);
+    min-width: calc(30% - 12px);
+    margin-right: 12px;
+}
+
+.poll-row__result {
+    flex: 1;
+    flex-basis: 70%;
+}
+
+@media screen and (max-width: 750px) {
+    .poll-row__name {
+        margin-bottom: 4px;
+    }
+    .poll-row__result {
+        flex-basis: 100%;
+        width: 100%;
+    }
+}
+
+.poll-row__result__bar {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.poll-row:nth-of-type(1) .poll-row__result__bar {
+    background-color: #2574db;
+}
+
+.poll-row:nth-of-type(2) .poll-row__result__bar {
+    background-color: #4bb543;
+}
+
+.poll-row:nth-of-type(3) .poll-row__result__bar {
+    background-color: #FFA500;
+}
+
+.poll-row:nth-of-type(4) .poll-row__result__bar {
+    background-color: #FF4500;
+}
