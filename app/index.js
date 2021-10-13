@@ -1,7 +1,7 @@
 let pollResults;
 
-function createDiv(className) {
-    const div = document.createElement('div');
+function createEl(className, tag = 'div') {
+    const div = document.createElement(tag);
     div.classList.add(className);
     return div;
 }
@@ -20,21 +20,35 @@ function renderPageContents() {
     const entries = Object.entries(pollResults).sort(([prevName, prevResult], [name, result]) => result > prevResult ? 1 : -1);
 
     entries.forEach(([name, result]) => {
-        const el = createDiv('poll-row');
+        const el = createEl('poll-row');
 
         console.log(totalVotes, result);
 
-        const nameElement = createDiv('poll-row__name');
+        const nameElement = createEl('poll-row__name');
         nameElement.textContent = name;
 
         el.appendChild(nameElement);
 
-        const resultEl = createDiv('poll-row__result');
-        const resultBar = createDiv('poll-row__result__bar');
+        const resultEl = createEl('poll-row__result');
+        const resultBar = createEl('poll-row__result__bar');
         // set all of their sizes to be a ratio of maxVote;
         resultBar.setAttribute("style", "width: " + (result / maxVote * 100) + "%;");
 
+        const voteCount = createEl('poll-row__votes', 'span');
+        voteCount.textContent = result + " votes";
+
+        const percent = createEl('poll-row__percent', 'span');
+        percent.textContent = (result / totalVotes * 100).toFixed(2) + "%";
+
         resultEl.appendChild(resultBar);
+        resultEl.appendChild(voteCount);
+
+        // only the first item falls inside the result bar
+        if(result < maxVote) {
+            percent.setAttribute("style", "color: var(--body-color)");
+        }
+
+        resultEl.appendChild(percent);
 
         el.appendChild(resultEl);
 
